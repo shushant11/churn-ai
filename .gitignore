@@ -9,3 +9,4 @@ artifacts/chroma/
 artifacts/*.joblib
 .pytest_cache/
 .ipynb_checkpoints/
+.vscode/
