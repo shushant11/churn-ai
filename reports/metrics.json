@@ -1,0 +1,490 @@
+{
+  "dataset": {
+    "gender_blind": true,
+    "rows": 10000,
+    "churn_rate": 0.2037,
+    "split": "stratified 60/20/20, seed 42"
+  },
+  "model_selection": [
+    {
+      "model": "blend_top3",
+      "val_pr_auc": 0.7,
+      "val_roc_auc": 0.8641,
+      "fit_seconds": 0.0
+    },
+    {
+      "model": "blend_trees_nets",
+      "val_pr_auc": 0.6988,
+      "val_roc_auc": 0.8658,
+      "fit_seconds": 0.0
+    },
+    {
+      "model": "random_forest",
+      "val_pr_auc": 0.6958,
+      "val_roc_auc": 0.8677,
+      "fit_seconds": 2.9
+    },
+    {
+      "model": "xgboost",
+      "val_pr_auc": 0.6891,
+      "val_roc_auc": 0.855,
+      "fit_seconds": 0.5
+    },
+    {
+      "model": "hist_gb",
+      "val_pr_auc": 0.6873,
+      "val_roc_auc": 0.8555,
+      "fit_seconds": 0.6
+    },
+    {
+      "model": "hist_gb_tuned",
+      "val_pr_auc": 0.684,
+      "val_roc_auc": 0.8553,
+      "fit_seconds": 0.0
+    },
+    {
+      "model": "lightgbm",
+      "val_pr_auc": 0.6833,
+      "val_roc_auc": 0.8535,
+      "fit_seconds": 0.3
+    },
+    {
+      "model": "mlp_sklearn",
+      "val_pr_auc": 0.6766,
+      "val_roc_auc": 0.8585,
+      "fit_seconds": 2.0
+    },
+    {
+      "model": "ft_transformer_tuned",
+      "val_pr_auc": 0.6759,
+      "val_roc_auc": 0.8544,
+      "fit_seconds": 0.0
+    },
+    {
+      "model": "ann_pytorch_tuned",
+      "val_pr_auc": 0.6747,
+      "val_roc_auc": 0.8567,
+      "fit_seconds": 0.0
+    },
+    {
+      "model": "ann_keras_tuned",
+      "val_pr_auc": 0.6717,
+      "val_roc_auc": 0.855,
+      "fit_seconds": 0.0
+    },
+    {
+      "model": "ann_pytorch",
+      "val_pr_auc": 0.6711,
+      "val_roc_auc": 0.8544,
+      "fit_seconds": 5.9
+    },
+    {
+      "model": "ann_keras",
+      "val_pr_auc": 0.6695,
+      "val_roc_auc": 0.8532,
+      "fit_seconds": 13.8
+    },
+    {
+      "model": "ft_transformer",
+      "val_pr_auc": 0.6642,
+      "val_roc_auc": 0.8533,
+      "fit_seconds": 44.1
+    },
+    {
+      "model": "logreg",
+      "val_pr_auc": 0.5812,
+      "val_roc_auc": 0.822,
+      "fit_seconds": 0.1
+    }
+  ],
+  "selected_model": "blend_top3",
+  "tuning": {
+    "best_params": {
+      "clf__min_samples_leaf": 10,
+      "clf__max_iter": 400,
+      "clf__max_depth": 3,
+      "clf__learning_rate": 0.03,
+      "clf__l2_regularization": 0.1
+    },
+    "cv_pr_auc": 0.7022034491299878
+  },
+  "tuning_neural": {
+    "ann_pytorch_tuned": {
+      "best_params": {
+        "clf__weight_decay": 0.001,
+        "clf__lr": 0.003,
+        "clf__hidden": "(128, 64, 32)",
+        "clf__dropout": 0.5,
+        "clf__batch": 64
+      },
+      "cv_pr_auc": 0.6789181406553201,
+      "trials": 10
+    },
+    "ft_transformer_tuned": {
+      "best_params": {
+        "clf__weight_decay": 1e-05,
+        "clf__n_layers": 1,
+        "clf__lr": 0.003,
+        "clf__dropout": 0.0,
+        "clf__d_model": 32
+      },
+      "cv_pr_auc": 0.6854545392877318,
+      "trials": 10
+    },
+    "ann_keras_tuned": {
+      "best_params": {
+        "clf__lr": 0.003,
+        "clf__hidden": "(32,)",
+        "clf__dropout": 0.2
+      },
+      "cv_pr_auc": 0.6733598743184309,
+      "trials": 5
+    }
+  },
+  "blend_members": {
+    "blend_top3": [
+      "random_forest",
+      "xgboost",
+      "hist_gb"
+    ],
+    "blend_trees_nets": [
+      "random_forest",
+      "xgboost",
+      "mlp_sklearn",
+      "ft_transformer_tuned"
+    ]
+  },
+  "test": {
+    "roc_auc": 0.8615,
+    "pr_auc": 0.7118,
+    "brier": 0.1008,
+    "ece": 0.0199,
+    "base_rate": 0.2035,
+    "pr_auc_95ci": [
+      0.6716,
+      0.7516
+    ],
+    "roc_auc_95ci": [
+      0.8395,
+      0.881
+    ],
+    "raw_brier": 0.113,
+    "accuracy_at_0.5": 0.868,
+    "majority_class_accuracy": 0.7965
+  },
+  "thresholds": {
+    "default_0.5": {
+      "threshold": 0.5,
+      "precision": 0.7718631178707225,
+      "recall": 0.4987714987714988,
+      "f1": 0.6059701492537314,
+      "flagged_share": 0.1315,
+      "tp": 203,
+      "fp": 60,
+      "fn": 204,
+      "tn": 1533,
+      "profit": 17300.0
+    },
+    "f1_opt": {
+      "threshold": 0.295,
+      "precision": 0.5910112359550562,
+      "recall": 0.6461916461916462,
+      "f1": 0.6173708920187794,
+      "flagged_share": 0.2225,
+      "tp": 263,
+      "fp": 182,
+      "fn": 144,
+      "tn": 1411,
+      "profit": 17200.0
+    },
+    "profit_opt": {
+      "threshold": 0.3,
+      "precision": 0.597254004576659,
+      "recall": 0.6412776412776413,
+      "f1": 0.6184834123222749,
+      "flagged_share": 0.2185,
+      "tp": 261,
+      "fp": 176,
+      "fn": 146,
+      "tn": 1417,
+      "profit": 17300.0
+    }
+  },
+  "contact_everyone_baseline": {
+    "threshold": 0.5,
+    "precision": 0.2035,
+    "recall": 1.0,
+    "f1": 0.3381803074366431,
+    "flagged_share": 1.0,
+    "tp": 407,
+    "fp": 1593,
+    "fn": 0,
+    "tn": 0,
+    "profit": -38950.0
+  },
+  "top20pct_capture": 0.6192,
+  "deciles": [
+    {
+      "decile": 1,
+      "customers": 200,
+      "churners": 171,
+      "avg_score": 0.8094,
+      "churn_rate": 0.855,
+      "lift": 4.2015,
+      "cum_capture": 0.4201
+    },
+    {
+      "decile": 2,
+      "customers": 200,
+      "churners": 81,
+      "avg_score": 0.4485,
+      "churn_rate": 0.405,
+      "lift": 1.9902,
+      "cum_capture": 0.6192
+    },
+    {
+      "decile": 3,
+      "customers": 200,
+      "churners": 53,
+      "avg_score": 0.2662,
+      "churn_rate": 0.265,
+      "lift": 1.3022,
+      "cum_capture": 0.7494
+    },
+    {
+      "decile": 4,
+      "customers": 200,
+      "churners": 35,
+      "avg_score": 0.183,
+      "churn_rate": 0.175,
+      "lift": 0.86,
+      "cum_capture": 0.8354
+    },
+    {
+      "decile": 5,
+      "customers": 200,
+      "churners": 19,
+      "avg_score": 0.1285,
+      "churn_rate": 0.095,
+      "lift": 0.4668,
+      "cum_capture": 0.8821
+    },
+    {
+      "decile": 6,
+      "customers": 200,
+      "churners": 17,
+      "avg_score": 0.0884,
+      "churn_rate": 0.085,
+      "lift": 0.4177,
+      "cum_capture": 0.9238
+    },
+    {
+      "decile": 7,
+      "customers": 200,
+      "churners": 12,
+      "avg_score": 0.0591,
+      "churn_rate": 0.06,
+      "lift": 0.2948,
+      "cum_capture": 0.9533
+    },
+    {
+      "decile": 8,
+      "customers": 200,
+      "churners": 12,
+      "avg_score": 0.0377,
+      "churn_rate": 0.06,
+      "lift": 0.2948,
+      "cum_capture": 0.9828
+    },
+    {
+      "decile": 9,
+      "customers": 200,
+      "churners": 5,
+      "avg_score": 0.0194,
+      "churn_rate": 0.025,
+      "lift": 0.1229,
+      "cum_capture": 0.9951
+    },
+    {
+      "decile": 10,
+      "customers": 200,
+      "churners": 2,
+      "avg_score": 0.0083,
+      "churn_rate": 0.01,
+      "lift": 0.0491,
+      "cum_capture": 1.0
+    }
+  ],
+  "business_assumptions": {
+    "customer_value": 500.0,
+    "offer_cost": 50.0,
+    "offer_success": 0.3
+  },
+  "fairness": {
+    "Gender": {
+      "groups": [
+        {
+          "attribute": "Gender",
+          "group": "Female",
+          "n": 930,
+          "actual_churn_rate": 0.2505,
+          "selection_rate": 0.2452,
+          "recall": 0.6352,
+          "fpr": 0.1148,
+          "auc": 0.8635
+        },
+        {
+          "attribute": "Gender",
+          "group": "Male",
+          "n": 1070,
+          "actual_churn_rate": 0.1626,
+          "selection_rate": 0.1953,
+          "recall": 0.6494,
+          "fpr": 0.1071,
+          "auc": 0.8622
+        }
+      ],
+      "disparity": {
+        "selection_rate_ratio": 0.7967,
+        "recall_ratio": 0.9781,
+        "fpr_ratio": 0.9335,
+        "flag_80pct_rule": true
+      }
+    },
+    "Geography": {
+      "groups": [
+        {
+          "attribute": "Geography",
+          "group": "France",
+          "n": 1021,
+          "actual_churn_rate": 0.1714,
+          "selection_rate": 0.1743,
+          "recall": 0.56,
+          "fpr": 0.0946,
+          "auc": 0.8493
+        },
+        {
+          "attribute": "Geography",
+          "group": "Germany",
+          "n": 504,
+          "actual_churn_rate": 0.2996,
+          "selection_rate": 0.3571,
+          "recall": 0.7616,
+          "fpr": 0.1841,
+          "auc": 0.8633
+        },
+        {
+          "attribute": "Geography",
+          "group": "Spain",
+          "n": 475,
+          "actual_churn_rate": 0.1705,
+          "selection_rate": 0.1663,
+          "recall": 0.5926,
+          "fpr": 0.0787,
+          "auc": 0.8647
+        }
+      ],
+      "disparity": {
+        "selection_rate_ratio": 0.4657,
+        "recall_ratio": 0.7353,
+        "fpr_ratio": 0.4273,
+        "flag_80pct_rule": true
+      }
+    },
+    "gender_comparison": {
+      "selected_model_uses_gender": false,
+      "selected": {
+        "test_pr_auc": 0.7117788131177922,
+        "gender_disparity": {
+          "selection_rate_ratio": 0.7967,
+          "recall_ratio": 0.9781,
+          "fpr_ratio": 0.9335,
+          "flag_80pct_rule": true
+        }
+      },
+      "alternative": {
+        "uses_gender": true,
+        "test_pr_auc": 0.7197,
+        "gender_disparity": {
+          "selection_rate_ratio": 0.5908,
+          "recall_ratio": 0.9071,
+          "fpr_ratio": 0.5314,
+          "flag_80pct_rule": true
+        }
+      }
+    }
+  },
+  "importance": [
+    {
+      "feature": "NumOfProducts",
+      "importance": 0.276,
+      "std": 0.014
+    },
+    {
+      "feature": "Age",
+      "importance": 0.251,
+      "std": 0.0131
+    },
+    {
+      "feature": "IsActiveMember",
+      "importance": 0.0913,
+      "std": 0.0083
+    },
+    {
+      "feature": "Balance",
+      "importance": 0.0555,
+      "std": 0.0088
+    },
+    {
+      "feature": "Geography",
+      "importance": 0.0426,
+      "std": 0.0037
+    },
+    {
+      "feature": "EstimatedSalary",
+      "importance": 0.0057,
+      "std": 0.0035
+    },
+    {
+      "feature": "Tenure",
+      "importance": 0.003,
+      "std": 0.0012
+    },
+    {
+      "feature": "CreditScore",
+      "importance": 0.001,
+      "std": 0.0018
+    },
+    {
+      "feature": "HasCrCard",
+      "importance": 0.0006,
+      "std": 0.0007
+    },
+    {
+      "feature": "Gender",
+      "importance": 0.0,
+      "std": 0.0
+    }
+  ],
+  "survival_logrank_geography": {
+    "groups": [
+      "France",
+      "Germany",
+      "Spain"
+    ],
+    "observed": [
+      810.0,
+      814.0,
+      413.0
+    ],
+    "expected": [
+      1018.6,
+      516.3,
+      502.0
+    ],
+    "chi2": 244.25,
+    "df": 2,
+    "p_value": 9.135492440066926e-54
+  },
+  "seconds": 1308.3
+}

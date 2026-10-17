@@ -1,0 +1,9 @@
+# Optional power-ups. Each one is detected at runtime; the project works without them.
+lightgbm>=4.5         # extra candidate model
+torch>=2.5            # PyTorch ANN candidate
+tensorflow>=2.18      # your original Keras ANN, rebuilt properly
+shap>=0.46            # Shapley explanations
+mlflow>=2.20          # experiment tracking (mlflow ui)
+chromadb>=0.6         # vector DB for RAG (RAG_BACKEND=chroma)
+sentence-transformers>=3.3   # BGE embeddings for ChromaDB
+mcp>=1.6              # MCP server (python -m churnlab.mcp_server)

@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+.env
+mlruns/
+mlartifacts/
+artifacts/chroma/
+artifacts/*.joblib
+.pytest_cache/
+.ipynb_checkpoints/

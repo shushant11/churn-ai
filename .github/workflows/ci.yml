@@ -1,0 +1,26 @@
+name: ci
+on: [push, pull_request]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11", cache: pip}
+      - run: pip install -r requirements.txt
+      - name: train (fast, no tuning)
+        run: python -m churnlab.train --fast
+        env: {PYTHONPATH: src}
+      - name: unit + API tests
+        run: pytest -q
+      - name: assistant evaluation gate
+        run: python -m churnlab.eval_llm
+        env: {PYTHONPATH: src}
+      - name: model quality gate (fail the build if PR-AUC drops)
+        run: python -c "import json,sys; m=json.load(open('reports/metrics.json')); sys.exit(0 if m['test']['pr_auc']>=0.65 else 1)"
+  docker:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -t churn-ai .

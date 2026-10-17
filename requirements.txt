@@ -1,0 +1,16 @@
+# Core (tested together on Python 3.11): training, evaluation, agent in rules mode, tests
+numpy==2.4.4
+pandas>=3.0.2,<3.1
+scipy==1.17.1
+scikit-learn==1.8.0
+xgboost==3.2.0
+joblib==1.5.3
+matplotlib==3.10.9
+# Serving
+fastapi==0.115.12
+uvicorn==0.34.0
+pydantic==2.11.3
+httpx==0.28.1
+streamlit==1.60.0
+# Testing
+pytest==8.3.5
