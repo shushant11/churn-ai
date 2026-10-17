@@ -1,0 +1,6 @@
+services:
+  - type: web
+    name: churn-ai-api
+    runtime: docker
+    plan: free
+    healthCheckPath: /health

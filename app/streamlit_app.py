@@ -30,7 +30,14 @@ def holdout():
 
 
 if not config.MODEL_PATH.exists():
-    st.error("No model found. Run `python -m churnlab.train` first."); st.stop()
+    # first launch on a fresh host (the model file is gitignored): train once, quick mode, same seed
+    import subprocess, os
+    with st.spinner("First launch: training the model (about 1-3 minutes, once)..."):
+        res = subprocess.run([sys.executable, "-m", "churnlab.train", "--fast"], capture_output=True, text=True,
+                             env={**os.environ, "PYTHONPATH": str(Path(__file__).resolve().parents[1] / "src")})
+    if res.returncode != 0 or not config.MODEL_PATH.exists():
+        st.error("Training failed on first launch."); st.code(res.stderr[-2000:]); st.stop()
+    st.cache_resource.clear(); st.cache_data.clear()
 b, m = bundle(), metrics()
 st.title("Churn AI — risk, reasons and retention")
 c1, c2, c3, c4 = st.columns(4)
