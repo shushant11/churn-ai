@@ -10,3 +10,4 @@ artifacts/*.joblib
 .pytest_cache/
 .ipynb_checkpoints/
 .vscode/
+reports.zip
