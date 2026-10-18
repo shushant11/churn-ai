@@ -11,3 +11,4 @@ artifacts/*.joblib
 .ipynb_checkpoints/
 .vscode/
 reports.zip
+reports.zip
