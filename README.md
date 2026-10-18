@@ -4,6 +4,8 @@ An end-to-end upgrade of my earlier ANN churn project. The model still predicts 
 
 > All numbers below come from `reports/metrics.json` and `reports/llm_eval.json`, produced by `python -m churnlab.train` and `python -m churnlab.eval_llm` (seed 42). The test set (2,000 customers) was used **once**.
 
+**Live demo:** [Streamlit dashboard](https://churn-ai-9cwovkphc548ppx2otukal.streamlit.app/) (predict one customer, portfolio lift and profit, fairness, drift, assistant). The hosted copy trains in quick mode on first launch, so its numbers can differ slightly from the full-run results below.
+
 ## Results at a glance
 
 | What | Result (held-out test, n = 2,000, churn rate 20.4%) |
